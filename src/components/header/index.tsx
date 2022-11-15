@@ -1,41 +1,77 @@
-import React from 'react'
-import { useSession } from 'next-auth/react'
-import Image from 'next/image'
+import React, { useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
-import styles from './header.module.sass'
+import Burger from "@animated-burgers/burger-squeeze";
+import "@animated-burgers/burger-squeeze/dist/styles.css";
 
-import { FiShoppingCart, FiUser } from 'react-icons/fi'
-import Link from 'next/link'
+import styles from "./header.module.sass";
 
-import { signOut } from 'next-auth/react'
+import { FiShoppingCart, FiUser } from "react-icons/fi";
+import Link from "next/link";
+
+import { signOut } from "next-auth/react";
 
 function Header() {
+  const { data: session } = useSession();
 
-    const {data: session} = useSession()
+  const [open, setOpen] = useState(false);
+
+  const hamb = useRef<any>(null);
+
+  const openHamburguer = () => {
+  
+    setOpen(!open)
+
+    if (!open) {
+      hamb.current.style.display = "flex";
+    } else {
+      hamb.current.style.display = "none";
+    }
+  };
 
   return (
-     <header className={styles.headerContainer}>
-       <Link href='/home' legacyBehavior>
-           <a className={styles.logo}><span>SHOP</span>NEW</a>
-       </Link>
+    <header className={styles.headerContainer}>
+      <Burger isOpen={open} onClick={openHamburguer} id={styles.burguer}/>
 
-        <nav>
-            <ul>
-                <Link href='/home'><li>Início</li></Link>
-                <Link href='/products'><li>Loja</li></Link>
-                <Link href='/about'><li>Sobre</li></Link>
-            </ul>
-        </nav>
+      <Link href="/home" legacyBehavior>
+        <a className={styles.logo}>
+          <span>SHOP</span>NEW
+        </a>
+      </Link>
 
-        <div className={styles.profileCartContainer}>
-        <Link legacyBehavior href='/cart'>
-           <a><FiShoppingCart size={35}/></a>
+      <nav ref={hamb}>
+        <ul>
+          <Link href="/home">
+            <li>Início</li>
+          </Link>
+          <Link href="/products">
+            <li>Loja</li>
+          </Link>
+          <Link href="/about">
+            <li>Sobre</li>
+          </Link>
+        </ul>
+      </nav>
+
+      <div className={styles.profileCartContainer}>
+        <Link legacyBehavior href="/cart">
+          <a>
+            <FiShoppingCart />
+          </a>
         </Link>
-        
-           <Image width={35} height={35} alt='user image' src={session?.user?.image} quality={100} onClick={() => signOut()}/>
-        </div>
-     </header>
-  )
+
+        <Image
+          width={35}
+          height={35}
+          alt="user image"
+          src={session?.user?.image}
+          quality={100}
+          onClick={() => signOut()}
+        />
+      </div>
+    </header>
+  );
 }
 
-export default Header
+export default Header;

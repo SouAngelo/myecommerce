@@ -11,6 +11,8 @@
     margin: auto
     margin-top: 1rem
     @include flexbox(space-between, center, row)
+    @media (max-width: 400px)
+        height: 350px
 
     & img
         border-radius: 10px
@@ -18,10 +20,15 @@
     & .bannerImg 
         width: 70%
         height: 100%
+        @media (max-width: 800px)
+            width: 100%
+            object-fit: cover
 
     & .appImg
         width: 25%
         height: 100%
+        @media (max-width: 800px)
+            display: none
 
 
 .productContent
