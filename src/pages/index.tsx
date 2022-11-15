@@ -18,16 +18,15 @@ export default function Initial() {
       <Head>
         <title>Shop New</title>
       </Head>
-      <main className={styles.container}>
+      <main>
          {!session ? (
           
           <Login/>
 
          ) : (
-           <>
            
            <Home/>
-           </>
+        
          )}
       </main>
     </>

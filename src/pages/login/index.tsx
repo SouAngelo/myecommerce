@@ -9,7 +9,8 @@ function Login() {
     const [password, setPassword] = useState('')
 
   return (
-    <form className='formContainer'>
+    <div className='container'>
+      <form className='formContainer'>
           <div className='formHeader'>
             <div><span>SHOP</span>NEW <img src="https://cdn-icons-png.flaticon.com/512/2271/2271049.png" alt="" /></div>
 
@@ -34,6 +35,7 @@ function Login() {
           </div>
 
         </form>
+    </div>
   )
 }
 

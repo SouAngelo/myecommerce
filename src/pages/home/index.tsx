@@ -23,8 +23,9 @@ function Home() {
         <button onClick={() => signOut()}>SAIR</button>
 
 
-        <Footer/>
+        
       </div>
+      <Footer/>
     </>
   );
 }

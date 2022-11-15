@@ -12,6 +12,7 @@ import Link from "next/link";
 
 import { signOut } from "next-auth/react";
 
+
 function Header() {
   const { data: session } = useSession();
 
@@ -65,7 +66,7 @@ function Header() {
           width={35}
           height={35}
           alt="user image"
-          src={session?.user?.image}
+          src={session?.user?.image || ''}
           quality={100}
           onClick={() => signOut()}
         />
