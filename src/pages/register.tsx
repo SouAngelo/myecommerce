@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from '../../styles/home.module.sass'
 import Link from "next/link";
 
 export default function Register() {
@@ -8,16 +7,16 @@ export default function Register() {
       <Head>
         <title>Home</title>
       </Head>
-      <main className={styles.container}>
-         <form className={styles.formContainer}>
-           <div className={styles.formHeader}>
+      <main className='container'>
+         <form className='formContainer'>
+           <div className='formHeader'>
              <div><span>SHOP</span>NEW <img src="https://cdn-icons-png.flaticon.com/512/2271/2271049.png" alt="" /></div>
 
              <h2>Login</h2>
              <p>Logue para acessar</p>
            </div>
 
-           <div className={styles.inputContainer}>
+           <div className='inputContainer'>
             
              <label htmlFor="name">Nome</label>
              <input type="text" placeholder="email@email.com" name="name"/>

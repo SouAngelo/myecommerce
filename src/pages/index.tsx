@@ -1,21 +1,22 @@
 import { useSession } from 'next-auth/react'
-
-import Dashboard from '../pages/dashboard'
+import Home from './home';
 
 import Head from "next/head";
-import styles from '../../styles/home.module.sass'
+import styles from '../../styles/initial.module.sass'
 import Login from './login';
 
 
 
-export default function Home() {
+
+
+export default function Initial() {
 
   const {data: session} = useSession()
 
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Shop New</title>
       </Head>
       <main className={styles.container}>
          {!session ? (
@@ -23,7 +24,10 @@ export default function Home() {
           <Login/>
 
          ) : (
-           <Dashboard/>
+           <>
+           
+           <Home/>
+           </>
          )}
       </main>
     </>

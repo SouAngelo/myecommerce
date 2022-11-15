@@ -1,0 +1,49 @@
+@import '../../../styles/_mixins&variables'
+
+.headerContainer
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    padding: 1.2rem .5rem
+    background: #e88e67
+    @include flexbox(space-around, center, row)
+    box-shadow: 0 0 5px #000000e9
+
+    & a
+        font-weight: bold
+        font-size: 1.5rem
+
+        & span
+            text-decoration: underline
+            color: #d42e1f
+
+    & nav 
+
+        & ul 
+            @include flexbox(center, center, row)
+            gap: 25px
+
+            & li 
+                font-size: 1rem
+                text-transform: uppercase
+                font-weight: 600
+
+                &:hover
+                    color: #923c3c
+
+.profileCartContainer
+    display: flex 
+    gap: 20px
+
+    & svg 
+        cursor: pointer
+        
+        &:hover 
+            color: #303030
+
+    & img 
+        width: 35px
+        height: 35px 
+        border-radius: 50%
+        cursor: pointer

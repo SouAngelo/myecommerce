@@ -1,0 +1,92 @@
+@import '../../../styles/_mixins&variables'
+    
+.container
+    width: 100%
+    min-height: 100vh
+    padding-top: 5rem
+
+.banner
+    width: 90%
+    height: 300px
+    margin: auto
+    margin-top: 1rem
+    @include flexbox(space-between, center, row)
+
+    & img
+        border-radius: 10px
+
+    & .bannerImg 
+        width: 70%
+        height: 100%
+
+    & .appImg
+        width: 25%
+        height: 100%
+
+
+.productContent
+    width: 90%
+    margin: 5rem auto
+
+    & h2 
+        color: #1d1c1c
+        margin-bottom: 2rem
+        margin-left: 2rem
+
+.cardsContainer
+    width: 100%
+    @include flexbox(center, center, row)
+    flex-wrap: wrap
+    gap: 15px
+
+.cardProduct
+    @include flexbox(none, flex-start, column)
+    width: 283px
+    height: 450px
+    border: 1px solid #a3a3a3
+    padding: 3rem 1rem
+    min-height: auto
+    min-width: auto
+    border-radius: 10px
+    cursor: pointer
+
+    & img 
+        width: 181px
+        height: 160px
+        margin-bottom: 1rem
+        align-self: center
+        transition: all .3s
+
+        &:hover
+            transform: scale(1.1)
+
+    & .description
+        font-size: .9rem
+        color: #5d5d5d
+        font-weight: 600
+        line-height: 22px
+        margin-bottom: 1rem
+
+        &:hover
+            color: #113ea5
+
+    & span 
+        margin-bottom: 1rem
+        font-size: 1.2rem
+
+        & svg 
+            color: #dda600
+
+    & h3
+        font-weight: normal
+        color: #646464
+        font-size: .9rem
+        margin-bottom: 1rem
+
+    & h1 
+        font-size: 1.4rem
+        margin-bottom: 10px
+    
+    & .parcelament
+        color: #646464
+        font-size: .88rem

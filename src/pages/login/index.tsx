@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from '../../../styles/home.module.sass'
 import Link from 'next/link'
 import { signIn } from 'next-auth/react'
 import { FaGoogle } from 'react-icons/fa'
@@ -10,15 +9,15 @@ function Login() {
     const [password, setPassword] = useState('')
 
   return (
-    <form className={styles.formContainer}>
-          <div className={styles.formHeader}>
+    <form className='formContainer'>
+          <div className='formHeader'>
             <div><span>SHOP</span>NEW <img src="https://cdn-icons-png.flaticon.com/512/2271/2271049.png" alt="" /></div>
 
             <h2>Login</h2>
             <p>Logue para acessar</p>
           </div>
 
-          <div className={styles.inputContainer}>
+          <div className='inputContainer'>
             <label htmlFor="user">Email</label>
             <input type="email" placeholder="email@email.com" name="user"/>
 
@@ -29,7 +28,7 @@ function Login() {
 
             <p>Não tem uma conta? <Link href='/register' legacyBehavior><a>Cadastre-se</a></Link></p>
 
-            <div className={styles.authGoogle}>
+            <div className='authGoogle'>
               <p>Entre com</p> <FaGoogle size={25} onClick={() => signIn()}/>
             </div>
           </div>
