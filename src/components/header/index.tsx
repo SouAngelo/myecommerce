@@ -43,14 +43,14 @@ function Header() {
 
       <nav ref={hamb}>
         <ul>
-          <Link href="/home">
-            <li>Início</li>
+          <Link href="/home" legacyBehavior>
+            <a><li>Início</li></a>
           </Link>
-          <Link href="/products">
-            <li>Loja</li>
+          <Link href="/products" legacyBehavior>
+            <a><li>Loja</li></a>
           </Link>
-          <Link href="/about">
-            <li>Sobre</li>
+          <Link href="/about" legacyBehavior>
+            <a><li>Sobre</li></a>
           </Link>
         </ul>
       </nav>
