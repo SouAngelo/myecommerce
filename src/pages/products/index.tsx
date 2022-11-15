@@ -14,7 +14,7 @@ const img = 'https://static.vecteezy.com/system/resources/previews/002/006/605/o
 function Products() {
 
 
-  
+
   return (
     <>
       <Head>
@@ -91,7 +91,7 @@ export default Products
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const session = await getSession(context);
   
-    if (!session?.user) {
+    if (!session) {
       return {
         redirect: {
           destination: "/",
@@ -101,7 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   
     return {
-      props: {},
+      props: { session },
     };
   };
   
