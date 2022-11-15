@@ -12,6 +12,9 @@ import Footer from '../../components/footer'
 const img = 'https://static.vecteezy.com/system/resources/previews/002/006/605/original/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-pink-backgroud-for-banner-market-ecommerce-free-vector.jpg'
 
 function Products() {
+
+
+  
   return (
     <>
       <Head>
@@ -85,20 +88,20 @@ export default Products
 
     
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//     const session = await getSession(context);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const session = await getSession(context);
   
-//     if (!session?.user) {
-//       return {
-//         redirect: {
-//           destination: "/",
-//           permanent: false,
-//         },
-//       };
-//     }
+    if (!session?.user) {
+      return {
+        redirect: {
+          destination: "/",
+          permanent: false,
+        },
+      };
+    }
   
-//     return {
-//       props: {},
-//     };
-//   };
+    return {
+      props: {},
+    };
+  };
   

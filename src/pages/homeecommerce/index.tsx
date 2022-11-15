@@ -8,7 +8,7 @@ import styles from "./home.module.sass";
 import Head from "next/head";
 import Footer from "../../components/footer";
 
-function Home() {
+function Homeec() {
   const { data: session } = useSession();
 
   return (
@@ -30,7 +30,7 @@ function Home() {
   );
 }
 
-export default Home;
+export default Homeec;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getSession(context);

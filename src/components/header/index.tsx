@@ -35,7 +35,7 @@ function Header() {
     <header className={styles.headerContainer}>
       <Burger isOpen={open} onClick={openHamburguer} id={styles.burguer}/>
 
-      <Link href="/home" legacyBehavior>
+      <Link href="/homeecommerce" legacyBehavior>
         <a className={styles.logo}>
           <span>SHOP</span>NEW
         </a>
@@ -43,7 +43,7 @@ function Header() {
 
       <nav ref={hamb}>
         <ul>
-          <Link href="/home" legacyBehavior>
+          <Link href="/homeecommerce" legacyBehavior>
             <a><li>Início</li></a>
           </Link>
           <Link href="/products" legacyBehavior>
