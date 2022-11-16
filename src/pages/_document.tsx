@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
         return(
             <Html>
                 <Head>
-                  
+                   <link rel="shortcut icon" type="image/png" href="/logo.png" />
                 </Head>
 
                 <body>

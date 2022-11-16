@@ -1,19 +1,43 @@
-import Head from 'next/head'
-import React from 'react'
-import Header from '../../components/header'
-import Searchbar from '../../components/searchbar'
-import styles from './products.module.sass'
+import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import Header from "../../components/header";
+import Searchbar from "../../components/searchbar";
+import styles from "./products.module.sass";
 
-import { FiStar } from 'react-icons/fi'
-import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
-import Footer from '../../components/footer'
+import { FiStar } from "react-icons/fi";
+import { GetServerSideProps } from "next";
+import { getSession } from "next-auth/react";
+import Footer from "../../components/footer";
 
-const img = 'https://static.vecteezy.com/system/resources/previews/002/006/605/original/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-pink-backgroud-for-banner-market-ecommerce-free-vector.jpg'
+import api from "../../services/api";
+import Link from "next/link";
+
+const img =
+  "https://static.vecteezy.com/system/resources/previews/002/006/605/original/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-pink-backgroud-for-banner-market-ecommerce-free-vector.jpg";
+
+interface ProductProps {
+  category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
+  rating: any;
+  title: string;
+}
 
 function Products() {
+  const [product, setProduct] = useState<ProductProps[]>([]);
 
+  useEffect(() => {
+    async function getProduct() {
+      const response = await api.get("/products");
 
+      console.log(response.data);
+      setProduct(response.data);
+    }
+
+    getProduct();
+  }, []);
 
   return (
     <>
@@ -21,87 +45,68 @@ function Products() {
         <title>NEWSHOP | Os melhores preços</title>
       </Head>
       <main className={styles.container}>
-        <Header/>
-        <Searchbar/>
+        <Header />
+        <Searchbar />
 
         <div className={styles.containerProducts}>
-             <div className={styles.banner}>
-                <img src={img} alt="" className={styles.bannerImg}/>
-                <img src="https://s.zst.com.br/prod/brickz/Fixo_Buscape_08_11_22_desk_088ff09ca5.png" alt="" className={styles.appImg}/>
-             </div>
+          <div className={styles.banner}>
+            <img src={img} alt="" className={styles.bannerImg} />
+            <img
+              src="https://s.zst.com.br/prod/brickz/Fixo_Buscape_08_11_22_desk_088ff09ca5.png"
+              alt=""
+              className={styles.appImg}
+            />
+          </div>
 
-             <div className={styles.productContent}>
-                <h2>Os melhores preços para você!</h2>
+          <div className={styles.productContent}>
+            <h2>Os melhores preços para você!</h2>
 
-                <div className={styles.cardsContainer}>
-
+            <div className={styles.cardsContainer}>
+              {product.map((product) => (
+                <Link key={product.id} legacyBehavior href={`/products/${product.id}`}>
+                  <a>
                     <div className={styles.cardProduct}>
-                       <img src="https://i.zst.com.br/thumbs/45/3e/39/-522515954.jpg" alt="" />
-                       <p className={styles.description}>Smartphone Apple iPhone 12 64 GB Câmera Dupla</p>
-                       <span><FiStar/> 4.9</span>
-                       
-                       <h3>Menor preço via Shoptime</h3>
-                       <h1>R$ 3.607,12</h1>
-                       <p className={styles.parcelament}>até 1x de R$ 4.099,00</p>
-                    </div>
+                      <img src={product.image} alt="" />
+                      <p className={styles.description}>{product.title}</p>
+                      <span>
+                        <FiStar />
+                        {product.rating.rate}
+                      </span>
 
-                    <div className={styles.cardProduct}>
-                       <img src="https://i.zst.com.br/thumbs/45/29/19/-846658799.jpg" alt="" />
-                       <p className={styles.description}>Smartphone Samsung Galaxy A53 5G SM-A536E 8GB RAM 128GB...</p>
-                       <span><FiStar/> 4.9</span>
-                       
-                       <h3>Menor preço via Shoptime</h3>
-                       <h1>R$ 1.498,50</h1>
-                       <p className={styles.parcelament}>até 10x de R$ 166,50 com juros</p>
+                      <h3>Menor preço via Shoptime</h3>
+                      <h1>R$ 3.607,12</h1>
+                      <p className={styles.parcelament}>
+                        até 1x de R$ 4.099,00
+                      </p>
                     </div>
-
-                    <div className={styles.cardProduct}>
-                       <img src="https://i.zst.com.br/thumbs/45/37/3e/-846828012.jpg" alt="" />
-                       <p className={styles.description}>Smartphone Samsung Galaxy A33 5G 6GB RAM 128GB Câmera...</p>
-                       <span><FiStar/> 4.9</span>
-                       
-                       <h3>Menor preço via Shoptime</h3>
-                       <h1>R$ 1.499,00</h1>
-                       <p className={styles.parcelament}>até 8x de R$ 187,37 sem juros</p>
-                    </div>
-
-                    <div className={styles.cardProduct}>
-                       <img src="https://i.zst.com.br/thumbs/45/37/35/-637533906.jpg" alt="" />
-                       <p className={styles.description}>Smartphone Samsung Galaxy M53 5G 128GB Câmera Quádrupla</p>
-                       <span><FiStar/> 4.9</span>
-                       
-                       <h3>Menor preço via Shoptime</h3>
-                       <h1>R$ 1.499,00</h1>
-                       <p className={styles.parcelament}>até 8x de R$ 208,00 com juros</p>
-                    </div>
-                </div>
-             </div>
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <Footer/>
+        <Footer />
       </main>
     </>
-  )
+  );
 }
 
-export default Products
-
-    
+export default Products;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const session = await getSession(context);
-  
-    if (!session) {
-      return {
-        redirect: {
-          destination: "/",
-          permanent: false,
-        },
-      };
-    }
-  
+  const session = await getSession(context);
+
+  if (!session) {
     return {
-      props: { session },
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
     };
+  }
+
+  return {
+    props: { session },
   };
-  
+};

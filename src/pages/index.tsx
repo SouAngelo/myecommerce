@@ -1,9 +1,8 @@
 import { useSession } from 'next-auth/react'
-import Homeecommerce from './homeecommerce';
 
 import Head from "next/head";
-import styles from '../../styles/initial.module.sass'
 import Login from './login';
+import Products from './products';
 
 
 
@@ -25,7 +24,7 @@ export default function Home() {
 
          ) : (
            
-           <Homeecommerce/>
+           <Products/>
         
          )}
       </main>

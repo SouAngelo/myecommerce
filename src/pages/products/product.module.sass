@@ -1,0 +1,188 @@
+@import '../../../styles/_mixins&variables'
+
+.container
+    width: 100%
+    min-height: 100vh
+    padding-top: 5rem
+    background: #f1f0f0
+
+.productContainer
+    width: 90%
+    height: 500px
+    margin: 3rem auto
+    @include flexbox(space-between, center, row)
+    position: relative
+
+.productArticle
+    width: 70%
+    height: 100%
+    background: #fff
+    border-radius: 5px
+    @include flexbox(space-between, none, row)
+    padding: 2rem 1rem
+
+.containerImages
+    width: 35%
+    @include flexbox(none, center, column)
+
+    & img
+        width: 250px
+        height: 250px
+        margin-top: 2rem
+        cursor: pointer
+
+.productPurchase
+    width: 28%
+    height: 100%
+    background: #fff
+    border-radius: 5px
+
+.productContent
+    width: 50%
+
+    & h1
+        font-size: 1.5rem
+        color: #5e5e5e
+        font-weight: 500
+        margin-bottom: 2rem
+
+    & p
+        color: #5e5e5e
+        line-height: 1.4rem
+
+.demoContainer
+    @include flexbox(space-between, center, row)
+    width: 100%
+    gap: 8px
+
+.demoImage
+    width: 70px
+    height: 60px
+    border: 1px solid #b0b0b0
+    margin-top: 2rem
+    @include flexbox(center, center, none)
+    border-radius: 5px
+    cursor: pointer
+
+    &:hover
+        border-color: #545454
+
+    & img
+        width: 80%
+        height: 80%
+        margin: 0
+
+.productPurchase
+    padding: 2rem 1rem
+    @include flexbox(none, none, column)
+
+    & del
+        color: #888888
+        margin-bottom: 10px
+
+    & strong
+        font-size: 1.8rem
+        color: #3e3e3e
+        margin-bottom: .3rem
+
+    & .installment
+        font-weight: bold
+        margin-bottom: .5rem
+        color: #3e3e3e
+
+    & span
+        display: flex
+        gap: 5px
+        color: #888888
+        font-size: 14px
+        margin-bottom: .7rem
+
+    & a
+        color: #707070
+        margin-bottom: .5rem
+        text-decoration: underline
+        cursor: pointer
+        margin-bottom: 2rem
+
+        &:hover
+            color: #ca3c3c
+
+    & .shippingContainer
+        margin-bottom: 2rem
+        border: 1px solid #ddd
+        padding: 1rem 10px
+        border-radius: 5px
+
+        & h1
+            font-size: 1rem
+            margin-bottom: 10px
+            color: #707070
+
+        & p
+            color: #707070
+            font-size: 14px
+            margin-bottom: 10px
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap
+
+        & hr 
+            margin: 1rem 0
+            border-color: #efefef
+
+.inputArea
+    width: 100%
+
+    & input
+        padding: .8rem 1rem
+        border-radius: 10px
+        border: 1px solid #b0b0b0
+        width: 76%
+        outline: none
+
+        &::placeholder
+            font-size: 15px
+
+    & button
+        height: 45px
+        width: 14%
+        margin-left: 1rem
+        border-radius: 5px
+        border: 2px solid #ca3c3c
+        background: transparent
+        color: #ca3c3c
+
+    & .receipt
+        display: flex
+        justify-content: space-between
+
+        & span:nth-child(2)
+            font-weight: bold
+
+        & p
+            color: #21870b
+            font-weight: bold
+            font-size: 14px
+
+.btnShop
+    @include flexbox(center, center, row)
+    gap: 6px
+    background: #ca3c3c
+    color: #fff
+    border: 0
+    width: 100%
+    height: 50px
+    border-radius: 10px
+    font-weight: bold
+    font-size: 18px
+    transition: filter .2s
+    margin-bottom: 2rem
+
+    &:hover
+        filter: brightness(1.1)
+
+    & svg
+        font-size: 20px
+
+    & + .btnShop
+        margin-bottom: 0
