@@ -35,7 +35,7 @@ function Header() {
     <header className={styles.headerContainer}>
       <Burger isOpen={open} onClick={openHamburguer} id={styles.burguer}/>
 
-      <Link href="/homeecommerce" legacyBehavior>
+      <Link href="/products" legacyBehavior>
         <a className={styles.logo}>
           <span>SHOP</span>NEW
         </a>

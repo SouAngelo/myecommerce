@@ -168,14 +168,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const response = await api.get(`/products/${Number(product?.product)}`);
 
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+  // if (!session) {
+  //   return {
+  //     redirect: {
+  //       destination: "/",
+  //       permanent: false,
+  //     },
+  //   };
+  // }
 
   return {
     props: {
