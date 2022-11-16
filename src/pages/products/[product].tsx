@@ -12,6 +12,7 @@ import styles from "./product.module.sass";
 import api, { apiCep } from "../../services/api";
 import Header from "../../components/header";
 import ModalPayment from "../../components/modal";
+import { getSession } from "next-auth/react";
 
 type ProductProps = {
   data: any;
@@ -163,8 +164,18 @@ export default Product;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const product = context?.params;
+  const session = await getSession(context);
 
   const response = await api.get(`/products/${Number(product?.product)}`);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
