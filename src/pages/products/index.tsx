@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import Header from "../../components/header";
-import Searchbar from "../../components/searchbar";
+import { FaSearch } from "react-icons/fa";
 import styles from "./products.module.sass";
 
 import { FiStar } from "react-icons/fi";
@@ -32,12 +32,12 @@ function Products() {
     async function getProduct() {
       const response = await api.get("/products");
 
-      console.log(response.data);
       setProduct(response.data);
     }
 
     getProduct();
   }, []);
+
 
   return (
     <>
@@ -46,10 +46,15 @@ function Products() {
       </Head>
       <main className={styles.container}>
         <Header />
-        <Searchbar />
+        <div className={styles.containerz}>
+          <div className={styles.containerInput}>
+            <input type="text" placeholder="Pesquisar produto..."id="input"/>
+            <FaSearch size={25}/>
+          </div>
+        </div>
 
         <div className={styles.containerProducts}>
-          <div className={styles.banner}>
+          <div className={styles.banner} id="banner">
             <img src={img} alt="" className={styles.bannerImg} />
             <img
               src="https://s.zst.com.br/prod/brickz/Fixo_Buscape_08_11_22_desk_088ff09ca5.png"
@@ -59,24 +64,28 @@ function Products() {
           </div>
 
           <div className={styles.productContent}>
-            <h2>Os melhores preços para você!</h2>
+            <h2 className="title">Os melhores preços para você!</h2>
 
             <div className={styles.cardsContainer}>
               {product.map((product) => (
-                <Link key={product.id} legacyBehavior href={`/products/${product.id}`}>
+                <Link
+                  key={product.id}
+                  legacyBehavior
+                  href={`/products/${product.id}`}
+                >
                   <a>
-                    <div className={styles.cardProduct}>
+                    <div className={styles.cardProduct} id='card' >
                       <img src={product.image} alt="" />
                       <p className={styles.description}>{product.title}</p>
                       <span>
                         <FiStar />
-                        {product.rating.rate}
+                        <p>{product.rating.rate}</p>
                       </span>
 
                       <h3>Menor preço via Shoptime</h3>
-                      <h1>R$ 3.607,12</h1>
+                      <h1>R$ {(product.price).toFixed(2)}</h1>
                       <p className={styles.parcelament}>
-                        até 1x de R$ 4.099,00
+                        até 8x de R$ {(product.price).toFixed(2)}
                       </p>
                     </div>
                   </a>

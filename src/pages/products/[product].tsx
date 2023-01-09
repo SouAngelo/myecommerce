@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Footer from "../../components/footer";
 import { FaCreditCard, FaTruck, FaLocationArrow } from "react-icons/fa";
 import { FiShoppingBag, FiShoppingCart } from "react-icons/fi";
@@ -13,6 +13,8 @@ import api, { apiCep } from "../../services/api";
 import Header from "../../components/header";
 import ModalPayment from "../../components/modal";
 import { getSession } from "next-auth/react";
+import { cartContext } from "../../contexts/cartContexts";
+import Link from "next/link";
 
 type ProductProps = {
   data: any;
@@ -34,6 +36,10 @@ function Product({ response }: Props) {
   const [loading, setLoading] = useState(false);
   const [visibleCep, setVisibleCep] = useState(false);
 
+  const [imageItem, setImageItem] = useState(response.image);
+
+  const { addItemsCart } = useContext<any>(cartContext);
+
   function getCep(e: any) {
     e.preventDefault();
     setLoading(true);
@@ -54,6 +60,10 @@ function Product({ response }: Props) {
     }, 1000);
   }
 
+  function changeDemoImage(e: any) {
+    setImageItem(e.target.src);
+  }
+
   return (
     <>
       <Head>
@@ -65,22 +75,34 @@ function Product({ response }: Props) {
           <ModalPayment />
           <div className={styles.productArticle}>
             <div className={styles.containerImages}>
-              <img src={response.image} alt="" />
+              <img src={imageItem} alt="" />
 
               <div className={styles.demoContainer}>
-                <div className={styles.demoImage}>
+                <div
+                  className={styles.demoImage}
+                  onClick={(e) => changeDemoImage(e)}
+                >
                   <img src={response.image} alt="" />
                 </div>
 
-                <div className={styles.demoImage}>
+                <div
+                  className={styles.demoImage}
+                  onClick={(e) => changeDemoImage(e)}
+                >
                   <img src={response.image} alt="" />
                 </div>
 
-                <div className={styles.demoImage}>
+                <div
+                  className={styles.demoImage}
+                  onClick={(e) => changeDemoImage(e)}
+                >
                   <img src={response.image} alt="" />
                 </div>
 
-                <div className={styles.demoImage}>
+                <div
+                  className={styles.demoImage}
+                  onClick={(e) => changeDemoImage(e)}
+                >
                   <img src={response.image} alt="" />
                 </div>
               </div>
@@ -144,13 +166,23 @@ function Product({ response }: Props) {
               </form>
             </div>
 
-            <button className={styles.btnShop}>
-              <FiShoppingBag /> Comprar
-            </button>
-
-            <button className={styles.btnShop}>
-              <FiShoppingCart /> Adicionar ao carrinho
-            </button>
+            <Link href="/cart" legacyBehavior>
+              <a>
+                <button
+                  className={styles.btnShop}
+                  onClick={() =>
+                    addItemsCart(
+                      response.title,
+                      response.price,
+                      response.id,
+                      response.image
+                    )
+                  }
+                >
+                  <FiShoppingBag /> Comprar
+                </button>
+              </a>
+            </Link>
           </aside>
         </section>
       </main>
