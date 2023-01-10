@@ -19,7 +19,7 @@ function Login() {
           </div>
 
           <div className='inputContainer'>
-            <label htmlFor="user">Email</label>
+            {/* <label htmlFor="user">Email</label>
             <input type="email" placeholder="email@email.com" name="user"/>
 
             <label htmlFor="pass">Senha</label>
@@ -27,10 +27,10 @@ function Login() {
 
             <button type="submit">Logar</button>
 
-            <p>Não tem uma conta? <Link href='/register' legacyBehavior><a>Cadastre-se</a></Link></p>
+            <p>Não tem uma conta? <Link href='/register' legacyBehavior><a>Cadastre-se</a></Link></p> */}
 
-            <div className='authGoogle'>
-              <p>Entre com</p> <FaGoogle size={25} onClick={() => signIn()}/>
+            <div className='authGoogle' onClick={() => signIn()}>
+            <FaGoogle size={25}/> <p>Continuar com google</p> 
             </div>
           </div>
 
