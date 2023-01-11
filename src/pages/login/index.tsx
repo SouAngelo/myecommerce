@@ -10,6 +10,7 @@ function Login() {
 
   return (
     <div className='container'>
+      
       <form className='formContainer'>
           <div className='formHeader'>
             <div><span>SHOP</span>NEW <img src="https://cdn-icons-png.flaticon.com/512/2271/2271049.png" alt="" /></div>
@@ -28,6 +29,8 @@ function Login() {
             <button type="submit">Logar</button>
 
             <p>Não tem uma conta? <Link href='/register' legacyBehavior><a>Cadastre-se</a></Link></p> */}
+
+            <p>Site sem funcionar, estamos em atualizações... </p>
 
             <div className='authGoogle' onClick={() => signIn()}>
             <FaGoogle size={25}/> <p>Continuar com google</p> 
