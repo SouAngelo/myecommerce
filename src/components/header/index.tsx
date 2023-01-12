@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
@@ -9,10 +9,12 @@ import { FiShoppingCart } from "react-icons/fi";
 import Link from "next/link";
 
 import { signOut } from "next-auth/react";
+import { cartContext } from "../../contexts/cartContexts";
 
 
 function Header() {
   const { data: session } = useSession();
+  const {cart} = useContext<any>(cartContext)
 
 
 
@@ -29,6 +31,7 @@ function Header() {
       <div className={styles.profileCartContainer}>
         <Link legacyBehavior href="/cart">
           <a>
+            <p className={styles.cartLength}>{cart.length}</p>
             <FiShoppingCart />
           </a>
         </Link>

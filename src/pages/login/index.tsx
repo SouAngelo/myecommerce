@@ -30,7 +30,7 @@ function Login() {
 
             <p>Não tem uma conta? <Link href='/register' legacyBehavior><a>Cadastre-se</a></Link></p> */}
 
-            <p>Site sem funcionar, estamos em atualizações... </p>
+            {/* <p>Site sem funcionar, estamos em atualizações... </p> */}
 
             <div className='authGoogle' onClick={() => signIn()}>
             <FaGoogle size={25}/> <p>Continuar com google</p> 

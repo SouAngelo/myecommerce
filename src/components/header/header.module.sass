@@ -26,6 +26,9 @@
     display: flex
     align-items: center
     gap: 20px
+    
+    & a 
+        position: relative
 
     & svg
         font-size: 35px
@@ -51,9 +54,11 @@
             font-weight: bold
 
 
-#burguer
-    display: none
-    @media(max-width: 600px)
-        display: block
-    @media(max-width: 400px)
-            font-size: 10px
+.cartLength
+    position: absolute
+    left: -25px
+    font-size: 15px
+    background: #fa4b4b
+    border-radius: 50%
+    padding: .5px 4px
+    color: #e7e3e3

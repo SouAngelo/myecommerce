@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import styles from "./cart.module.sass";
 
@@ -9,10 +9,9 @@ import { cartContext } from "../../contexts/cartContexts";
 
 import { FaTrash, FaStore } from "react-icons/fa";
 import Link from "next/link";
-import { privateDecrypt } from "crypto";
 
 function Cart() {
-  const { cart, handleRemoveItem, clearCart} = useContext<any>(cartContext);
+  const { cart, handleRemoveItem, clearCart, addItemsCart, handlePaymantPage, loading} = useContext<any>(cartContext);
 
   return (
     <>
@@ -68,6 +67,11 @@ function Cart() {
               <button onClick={() => handleRemoveItem(index)}>
                 <FaTrash />
               </button>
+
+              <div className={styles.btns}>
+                <button onClick={() => handleRemoveItem(index)}>-</button>
+                <button onClick={() => addItemsCart(item.name, item.price, item.id, item.image)}>+</button>
+              </div>
             </div>
           </div>
         ))}
@@ -100,7 +104,7 @@ function Cart() {
 
             <hr />
 
-            <button>Continuar</button>
+            <button onClick={() => handlePaymantPage()}>{loading ? 'Carregando...' : 'Continuar'}</button>
           </div>
         )}
       </main>
