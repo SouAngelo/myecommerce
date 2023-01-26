@@ -11,7 +11,7 @@ import { FaTrash, FaStore } from "react-icons/fa";
 import Link from "next/link";
 
 function Cart() {
-  const { cart, handleRemoveItem, clearCart, addItemsCart, handlePaymantPage, loading} = useContext<any>(cartContext);
+  const { cart, handleRemoveItem, clearCart, addItemsCart } = useContext<any>(cartContext);
 
   return (
     <>
@@ -83,7 +83,7 @@ function Cart() {
             <div className={styles.priceResume}>
               <label>
                 <p>{cart.length} {cart.length > 1 ? 'produtos' : 'produto'}</p>
-                <span>R$ {(cart.reduce((total: any, item: any) => total += item.price, 0).toFixed(2))}</span>
+                <span>R$ {(cart.reduce((total: any, item: any) => total += item.price, 0).toFixed(2).replace(".",","))}</span>
               </label>
 
               <label>
@@ -98,13 +98,17 @@ function Cart() {
               <h2>total</h2>
               <label>
                 <p>R$ {(cart.reduce((total: any, item: any) => total += item.price, 0).toFixed(2))}</p>
-                <span>em 1x no cartão ou R$ {(cart.reduce((total: any, item: any) => total += item.price, 0).toFixed(2))} em até 8x</span>
+                <span>em 1x no cartão ou R$ {(cart.reduce((total: any, item: any) => total += item.price, 0).toFixed(2).replace(".",","))} em até 8x</span>
               </label>
             </div>
 
             <hr />
 
-            <button onClick={() => handlePaymantPage()}>{loading ? 'Carregando...' : 'Continuar'}</button>
+            <Link href='/paymant' legacyBehavior>
+             <a>
+               <button>Continuar</button>
+             </a>
+            </Link>
           </div>
         )}
       </main>

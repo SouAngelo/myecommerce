@@ -7,15 +7,6 @@ export default function CartProvider({ children }) {
 
   const [loading, setLoading] = useState(false)
 
-  function handlePaymantPage(name, price, id, image){
-
-    setLoading(true)
-
-    setTimeout(function(){
-     window.location.href = '/paymant'
-    }, 500)
-
-  }
 
   useEffect(() => {
     setLoading(false)
@@ -26,7 +17,6 @@ export default function CartProvider({ children }) {
 
     setCart([...cart, newItem]);
 
-    
   }
 
   function handleRemoveItem(index) {
@@ -41,7 +31,7 @@ export default function CartProvider({ children }) {
 
   return (
     <cartContext.Provider
-      value={{ addItemsCart, cart, handleRemoveItem, clearCart, handlePaymantPage, loading}}
+      value={{ addItemsCart, cart, handleRemoveItem, clearCart, loading}}
     >
       {children}
     </cartContext.Provider>
