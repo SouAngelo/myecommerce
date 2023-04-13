@@ -36,16 +36,6 @@ function Header() {
           </a>
         </Link>
 
-        <Image
-          width={35}
-          height={35}
-          alt="user image"
-          src={session?.user?.image || ''}
-          quality={100}
-          onClick={() => signOut()}
-        />
-
-        <p>Olá <span>{session?.user?.name}</span></p>
       </div>
     </header>
   );

@@ -1,11 +1,7 @@
 import { useSession } from 'next-auth/react'
 
 import Head from "next/head";
-import Login from './login';
 import Products from './products';
-
-
-
 
 
 export default function Home() {
@@ -18,15 +14,9 @@ export default function Home() {
         <title>Shop New</title>
       </Head>
       <main>
-         {!session ? (
-          
-          <Login/>
-
-         ) : (
-           
+         
            <Products/>
-        
-         )}
+
       </main>
     </>
   );
